@@ -1,7 +1,7 @@
 #! /usr/bin/python
 
 #Created by Henrique Rauen (rickgithub@hsj.email)
-#Last Modified: Wed Jun 14 15:57:09 2023
+#Last Modified: Wed Jun 14 16:28:55 2023
 from random import choice
 
 class Hangman:
@@ -40,7 +40,7 @@ class Hangman:
         self._game_over()
 
     def _well_played(self):
-        """Local.Present the winning message and run required end
+        """Local. Present the winning message and run required end
         of game commands"""
         print (f"You found the word {''.join(self._word_to_find)} in {self._turn_count} turns with {self._error_count} errors!")
 
@@ -63,7 +63,7 @@ class Hangman:
                 self._wrongly_guessed_letters.append(guessed_letter)
                 self._error_count += 1
                 self._lives += -1
-                self._show_status()
+        self._show_status()
         else:
             #Player made invalid input, starts over the turn
             self._play()
@@ -73,16 +73,14 @@ class Hangman:
         for index, l in enumerate(self._word_to_find):
             if l == letter:
                 self._correctly_guessed_letters[index] = letter
-        self._show_status()
 
     def _show_status(self):
         """Local. Show the status of the current game (the hangman status)"""
         print(f"You still have {self._lives} lives and the status of your guess is: {self._correctly_guessed_letters}")
 
-    def _guess_validity(self,x):
+    def _guess_validity(self, x):
         """Local. Checks the validity of the user guess, must be single letter and
         not have been guessed before"""
-        x.lower()
         if len(x) == 1 and x in self.available_letters:
             if (x not in self._wrongly_guessed_letters and
                 x not in self._correctly_guessed_letters):
