@@ -1,7 +1,7 @@
 #! /usr/bin/python
 
 #Created by Henrique Rauen (rickgithub@hsj.email)
-#Last Modified: Wed Jun 14 16:28:55 2023
+#Last Modified: Wed Jun 14 16:32:34 2023
 from random import choice
 
 class Hangman:
@@ -63,7 +63,7 @@ class Hangman:
                 self._wrongly_guessed_letters.append(guessed_letter)
                 self._error_count += 1
                 self._lives += -1
-        self._show_status()
+            self._show_status()
         else:
             #Player made invalid input, starts over the turn
             self._play()
@@ -76,7 +76,8 @@ class Hangman:
 
     def _show_status(self):
         """Local. Show the status of the current game (the hangman status)"""
-        print(f"You still have {self._lives} lives and the status of your guess is: {self._correctly_guessed_letters}")
+        status = " ".join(self._correctly_guessed_letters)
+        print(f"You still have {self._lives} lives and the status of your guess is: {status}")
 
     def _guess_validity(self, x):
         """Local. Checks the validity of the user guess, must be single letter and
