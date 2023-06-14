@@ -1,7 +1,7 @@
 #! /usr/bin/python
 
 #Created by Henrique Rauen (rickgithub@hsj.email)
-#Last Modified: Wed Jun 14 16:34:12 2023
+#Last Modified: Wed Jun 14 17:43:44 2023
 
 import utils.game as game
 
@@ -18,5 +18,5 @@ hang.start_game()"""
 hang.start_game(True)"""
 
 #Sample run the game in full mode (with expansive list of words and 10 lives
-hang = game.Hangman(10)
+hang = game.Hangman(7)
 hang.start_game(True)

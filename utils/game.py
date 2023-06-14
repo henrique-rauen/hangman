@@ -1,7 +1,7 @@
 #! /usr/bin/python
 
 #Created by Henrique Rauen (rickgithub@hsj.email)
-#Last Modified: Wed Jun 14 16:58:45 2023
+#Last Modified: Wed Jun 14 17:44:15 2023
 from random import choice
 
 class Hangman:
@@ -14,22 +14,22 @@ class Hangman:
         self._turn_count = 0
         self._error_count = 0
 
-    def _set_up_words(self, list):
+    def _set_up_words(self, use_list):
         """Set up the list of possible words and choose one to be the one
         played in this game"""
-        if list == None:
-            self._possible_words = ["becode", "learning",
-                                "mathematics", "sessions"]
-        else:
+        if use_list:
             word_list = open("utils/word_list.txt")
             self._possible_words =[a[:-1] for a in  word_list.readlines()]
             word_list.close()
+        else:
+            self._possible_words = ["becode", "learning",
+                                    "mathematics", "sessions"]
         *self._word_to_find, = choice(self._possible_words).lower()
         self._correctly_guessed_letters = ["_"] * len(self._word_to_find)
 
-    def start_game(self, list = None):
+    def start_game(self, use_list=None):
         """Public. Start and run the game"""
-        self._set_up_words(list) #Chooses a word based on parameter 'list'
+        self._set_up_words(use_list) #Chooses a word based on parameter 'list'
         print(f"You have {self._lives} lives, good luck!")
         while self._lives > 0:
             if "_" in self._correctly_guessed_letters:
