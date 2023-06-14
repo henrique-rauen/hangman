@@ -1,12 +1,14 @@
 #! /usr/bin/python
 
 #Created by Henrique Rauen (rickgithub@hsj.email)
-#Last Modified: Wed Jun 14 11:29:41 2023
+#Last Modified: Wed Jun 14 11:36:31 2023
+from random import choice
 class Hangman:
     available_letters = "abcdefghijklmnopqrstuvwxyz"
     def __init__(self):
-        self._possible_words = ["crazyness"]
-        *self._word_to_find, = self._possible_words[0]
+        self._possible_words = ["crazyness","becode", "learning",
+                                "mathematics", "sessions"]
+        *self._word_to_find, = choice(self._possible_words)
         self._lives = 5
         self._correctly_guessed_letters = ["_"] * len(self._word_to_find)
         self._wrongly_guessed_letters = []
