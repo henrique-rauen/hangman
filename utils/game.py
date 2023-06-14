@@ -1,7 +1,7 @@
 #! /usr/bin/python
 
 #Created by Henrique Rauen (rickgithub@hsj.email)
-#Last Modified: Wed Jun 14 16:38:06 2023
+#Last Modified: Wed Jun 14 16:58:45 2023
 from random import choice
 
 class Hangman:
@@ -24,7 +24,7 @@ class Hangman:
             word_list = open("utils/word_list.txt")
             self._possible_words =[a[:-1] for a in  word_list.readlines()]
             word_list.close()
-        *self._word_to_find, = choice(self._possible_words)
+        *self._word_to_find, = choice(self._possible_words).lower()
         self._correctly_guessed_letters = ["_"] * len(self._word_to_find)
 
     def start_game(self, list = None):
