@@ -1,7 +1,7 @@
 #! /usr/bin/python
 
 #Created by Henrique Rauen (rickgithub@hsj.email)
-#Last Modified: Wed Jun 14 12:08:41 2023
+#Last Modified: Wed Jun 14 14:05:03 2023
 from random import choice
 
 class Hangman:
@@ -9,17 +9,27 @@ class Hangman:
     'start_game'. Has an optional parameter 'lives', default set to 5"""
     available_letters = "abcdefghijklmnopqrstuvwxyz"
     def __init__(self, lives=5):
-        self._possible_words = ["crazyness","becode", "learning",
-                                "mathematics", "sessions"]
-        *self._word_to_find, = choice(self._possible_words)
         self._lives = lives
-        self._correctly_guessed_letters = ["_"] * len(self._word_to_find)
         self._wrongly_guessed_letters = []
         self._turn_count = 0
         self._error_count = 0
 
-    def start_game(self):
+    def _set_up_words(self, list):
+        """Set up the list of possible words and choose one to be the one
+        played in this game"""
+        if list == None:
+            self._possible_words = ["becode", "learning",
+                                "mathematics", "sessions"]
+        else:
+            word_list = open("utils/word_list.txt")
+            self._possible_words =[a[:-1] for a in  word_list.readlines()]
+            word_list.close()
+        *self._word_to_find, = choice(self._possible_words)
+        self._correctly_guessed_letters = ["_"] * len(self._word_to_find)
+
+    def start_game(self, list = None):
         """Public. Start and run the game"""
+        self._set_up_words(list) #Chooses a word based on parameter 'list'
         print(f"You have {self._lives} lives, good luck!")
         while self._lives > 0:
             if "_" in self._correctly_guessed_letters:
@@ -38,6 +48,7 @@ class Hangman:
         """Local. Present the losing message and run required end
         of game commands"""
         print("game over...")
+        print(f"Your word was {self._word_to_find}")
 
     def _play(self):
         """Local. runs a player turn"""
