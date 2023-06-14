@@ -1,23 +1,27 @@
 #! /usr/bin/python
 
 #Created by Henrique Rauen (rickgithub@hsj.email)
-#Last Modified: Wed Jun 14 11:36:31 2023
+#Last Modified: Wed Jun 14 12:02:57 2023
 from random import choice
+
 class Hangman:
+    """Class Hangman. Has a single public method to start the game:
+    'start_game'. Has an optional parameter 'lives', default set to 5 """
     available_letters = "abcdefghijklmnopqrstuvwxyz"
-    def __init__(self):
+    def __init__(self, lives=5):
         self._possible_words = ["crazyness","becode", "learning",
                                 "mathematics", "sessions"]
         *self._word_to_find, = choice(self._possible_words)
-        self._lives = 5
+        self._lives = lives
         self._correctly_guessed_letters = ["_"] * len(self._word_to_find)
         self._wrongly_guessed_letters = []
         self._turn_count = 0
         self._error_count = 0
 
     def start_game(self):
-        print(self._word_to_find)
-        while self._lives > 0:
+        """Public. Start and run the game"""
+        print(f"You have {self._lives} lives, good luck!")
+        while self._lives > 1:
             if "_" in self._correctly_guessed_letters:
                 self._play()
             else:
@@ -26,12 +30,17 @@ class Hangman:
         self._game_over()
 
     def _well_played(self):
+        """Local.Present the winning message and run required end
+        of game commands""" 
         print (f"You found the word {''.join(self._word_to_find)} in {self._turn_count} turns with {self._error_count} errors!")
 
     def _game_over(self):
+        """Local. Present the losing message and run required end
+        of game commands""" 
         print("game over...")
 
     def _play(self):
+        """Local. runs a player turn"""
         guessed_letter = input("Please guess a letter: ").lower()
         if self._guess_validity(guessed_letter):
             self._turn_count += 1
@@ -46,15 +55,19 @@ class Hangman:
             self._play()
 
     def _update_hangman(self,letter):
+        """Local. Updates the hangman with the new found letter"""
         for index, l in enumerate(self._word_to_find):
             if l == letter:
                 self._correctly_guessed_letters[index] = letter
         self._show_status()
 
     def _show_status(self):
-        print(f"The status of your guess is: {self._correctly_guessed_letters}")
+        """Local. Show the status of the current game (the hangman status)"""
+        print(f"You still have {self._lives} lives and the status of your guess is: {self._correctly_guessed_letters}")
 
     def _guess_validity(self,x):
+        """Local. Checks the validity of the user guess, must be single letter and
+        must not have been guessed before"""
         x.lower()
         if len(x) == 1 and x in self.available_letters:
             if (x not in self._wrongly_guessed_letters and
