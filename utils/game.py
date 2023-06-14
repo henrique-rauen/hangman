@@ -1,7 +1,7 @@
 #! /usr/bin/python
 
 #Created by Henrique Rauen (rickgithub@hsj.email)
-#Last Modified: Wed Jun 14 10:45:26 2023
+#Last Modified: Wed Jun 14 11:29:41 2023
 class Hangman:
     available_letters = "abcdefghijklmnopqrstuvwxyz"
     def __init__(self):
@@ -15,7 +15,6 @@ class Hangman:
 
     def start_game(self):
         print(self._word_to_find)
-        print(self._correctly_guessed_letters)
         while self._lives > 0:
             if "_" in self._correctly_guessed_letters:
                 self._play()
@@ -25,20 +24,22 @@ class Hangman:
         self._game_over()
 
     def _well_played(self):
-        print (f"You found the word {self._word_to_find} in {self._turn_count} turns with {self._error_count}")
+        print (f"You found the word {''.join(self._word_to_find)} in {self._turn_count} turns with {self._error_count} errors!")
 
     def _game_over(self):
         print("game over...")
 
     def _play(self):
-        guessed_letter = input("Please guess a letter: ")
+        guessed_letter = input("Please guess a letter: ").lower()
         if self._guess_validity(guessed_letter):
+            self._turn_count += 1
             if guessed_letter in self._word_to_find:
-               self._update_hangman(guessed_letter)
+                self._update_hangman(guessed_letter)
             else:
                 self._wrongly_guessed_letters.append(guessed_letter)
                 self._error_count += 1
                 self._lives += -1
+                self._show_status()
         else:
             self._play()
 
@@ -46,6 +47,10 @@ class Hangman:
         for index, l in enumerate(self._word_to_find):
             if l == letter:
                 self._correctly_guessed_letters[index] = letter
+        self._show_status()
+
+    def _show_status(self):
+        print(f"The status of your guess is: {self._correctly_guessed_letters}")
 
     def _guess_validity(self,x):
         x.lower()
