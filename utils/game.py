@@ -1,12 +1,12 @@
 #! /usr/bin/python
 
 #Created by Henrique Rauen (rickgithub@hsj.email)
-#Last Modified: Wed Jun 14 12:02:57 2023
+#Last Modified: Wed Jun 14 12:08:41 2023
 from random import choice
 
 class Hangman:
     """Class Hangman. Has a single public method to start the game:
-    'start_game'. Has an optional parameter 'lives', default set to 5 """
+    'start_game'. Has an optional parameter 'lives', default set to 5"""
     available_letters = "abcdefghijklmnopqrstuvwxyz"
     def __init__(self, lives=5):
         self._possible_words = ["crazyness","becode", "learning",
@@ -21,7 +21,7 @@ class Hangman:
     def start_game(self):
         """Public. Start and run the game"""
         print(f"You have {self._lives} lives, good luck!")
-        while self._lives > 1:
+        while self._lives > 0:
             if "_" in self._correctly_guessed_letters:
                 self._play()
             else:
@@ -31,12 +31,12 @@ class Hangman:
 
     def _well_played(self):
         """Local.Present the winning message and run required end
-        of game commands""" 
+        of game commands"""
         print (f"You found the word {''.join(self._word_to_find)} in {self._turn_count} turns with {self._error_count} errors!")
 
     def _game_over(self):
         """Local. Present the losing message and run required end
-        of game commands""" 
+        of game commands"""
         print("game over...")
 
     def _play(self):
@@ -52,6 +52,7 @@ class Hangman:
                 self._lives += -1
                 self._show_status()
         else:
+            #Player made invalid input, starts over the turn
             self._play()
 
     def _update_hangman(self,letter):
@@ -67,7 +68,7 @@ class Hangman:
 
     def _guess_validity(self,x):
         """Local. Checks the validity of the user guess, must be single letter and
-        must not have been guessed before"""
+        not have been guessed before"""
         x.lower()
         if len(x) == 1 and x in self.available_letters:
             if (x not in self._wrongly_guessed_letters and
