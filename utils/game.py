@@ -1,7 +1,7 @@
 #! /usr/bin/python
 
 #Created by Henrique Rauen (rickgithub@hsj.email)
-#Last Modified: Wed Jun 14 12:08:41 2023
+#Last Modified: Wed Jun 14 14:27:38 2023
 from random import choice
 
 class Hangman:
@@ -9,7 +9,7 @@ class Hangman:
     'start_game'. Has an optional parameter 'lives', default set to 5"""
     available_letters = "abcdefghijklmnopqrstuvwxyz"
     def __init__(self, lives=5):
-        self._possible_words = ["crazyness","becode", "learning",
+        self._possible_words = ["becode", "learning",
                                 "mathematics", "sessions"]
         *self._word_to_find, = choice(self._possible_words)
         self._lives = lives
