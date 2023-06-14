@@ -1,13 +1,13 @@
 #! /usr/bin/python
 
 #Created by Henrique Rauen (rickgithub@hsj.email)
-#Last Modified: Wed Jun 14 14:05:31 2023
+#Last Modified: Wed Jun 14 16:34:12 2023
 
 import utils.game as game
 
 #Run the demo version with only 4 words
-hang = game.Hangman()
-hang.start_game()
+"""hang = game.Hangman()
+hang.start_game()"""
 
 #Sample run the demo with 6 lives
 """hang = game.Hangman(5)
@@ -18,5 +18,5 @@ hang.start_game()"""
 hang.start_game(True)"""
 
 #Sample run the game in full mode (with expansive list of words and 10 lives
-"""hang = game.Hangman(10)
-hang.start_game(True)"""
+hang = game.Hangman(10)
+hang.start_game(True)

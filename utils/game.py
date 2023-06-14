@@ -1,7 +1,7 @@
 #! /usr/bin/python
 
 #Created by Henrique Rauen (rickgithub@hsj.email)
-#Last Modified: Wed Jun 14 16:32:34 2023
+#Last Modified: Wed Jun 14 16:38:06 2023
 from random import choice
 
 class Hangman:
@@ -48,7 +48,7 @@ class Hangman:
         """Local. Present the losing message and run required end
         of game commands"""
         print("game over...")
-        print(f"Your word was {self._word_to_find}")
+        print(f"Your word was {''.join(self._word_to_find)}")
 
     def _play(self):
         """Local. runs a player turn"""
