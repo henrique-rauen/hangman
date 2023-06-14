@@ -1,7 +1,7 @@
 #! /usr/bin/python
 
 #Created by Henrique Rauen (rickgithub@hsj.email)
-#Last Modified: Wed Jun 14 14:05:03 2023
+#Last Modified: Wed Jun 14 15:57:09 2023
 from random import choice
 
 class Hangman:
@@ -56,8 +56,10 @@ class Hangman:
         if self._guess_validity(guessed_letter):
             self._turn_count += 1
             if guessed_letter in self._word_to_find:
+                print("Good Guess!")
                 self._update_hangman(guessed_letter)
             else:
+                print("Bad Guess... :(")
                 self._wrongly_guessed_letters.append(guessed_letter)
                 self._error_count += 1
                 self._lives += -1
