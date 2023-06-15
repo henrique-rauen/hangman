@@ -1,7 +1,7 @@
 #! /usr/bin/python
 
 #Created by Henrique Rauen (rickgithub@hsj.email)
-#Last Modified: Thu Jun 15 08:42:09 2023
+#Last Modified: Thu Jun 15 08:54:57 2023
 
 import utils.game as game
 hang = game.Hangman()
@@ -14,4 +14,4 @@ hang = game.Hangman()
 
 #hang.start_game(True, 10) #Sample run the full game with 10 lives
 
-hang.start_game(True, 5) #Sample run the game in full mode and 5 lives
+hang.start_game(full_mode = True, lives = 5) #Sample run the game in full mode and 5 lives

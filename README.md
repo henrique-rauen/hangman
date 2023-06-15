@@ -12,7 +12,7 @@ In order to install you can either clone this repository or download the files s
 - You can change the game difficulty by changing the number of lives.
 ### Usage
 ```Hangman.start_game()```\
-The ```start_game()``` function has 2 optional parameters: ```full``` (boolean) and  ```lives``` (int). Default is ```full=False``` and ```lives=5```. If you want to run the game in full mode use ```start_game(full=True)```, to change the number of lives use ```start_game(lives=5)```.\
+The ```start_game()``` function has 2 optional parameters: ```full_mode``` (boolean) and  ```lives``` (int). Default is ```full_mode=False``` and ```lives=5```. If you want to run the game in full mode use ```start_game(full_mode=True)```, to change the number of lives use ```start_game(lives=5)```.\
 The file ```main.py``` comes with 3 sample usages of the game. If you run the file as is, it will run in full mode with 5 lives.
 In order to run the file just type ```python3 main.py```
 
