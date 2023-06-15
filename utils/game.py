@@ -1,7 +1,7 @@
 #! /usr/bin/python
 
 #Created by Henrique Rauen (rickgithub@hsj.email)
-#Last Modified: Thu Jun 15 08:47:06 2023
+#Last Modified: Thu Jun 15 08:59:08 2023
 from random import choice
 from os import system
 from os import name
@@ -110,14 +110,11 @@ class Hangman:
     def _guess_validity(self, x):
         """Local. Checks the validity of the user guess, must either (be single letter and
         not have been guessed before) OR be a word guess"""
+        validity = False
         if len(x) == 1 and x in self.available_letters:
             if (x not in self._wrongly_guessed_words and
                 x not in self._correctly_guessed_words):
                 validity = True
-            else:
-                validity = False
         elif x.isalpha():
             validity = True
-        else:
-            validity =  False
         return validity
