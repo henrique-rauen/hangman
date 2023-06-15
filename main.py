@@ -1,22 +1,17 @@
 #! /usr/bin/python
 
 #Created by Henrique Rauen (rickgithub@hsj.email)
-#Last Modified: Wed Jun 14 17:43:44 2023
+#Last Modified: Thu Jun 15 08:42:09 2023
 
 import utils.game as game
+hang = game.Hangman()
 
-#Run the demo version with only 4 words
-"""hang = game.Hangman()
-hang.start_game()"""
+#hang.start_game() #Run the demo version with the default 5 lives
 
-#Sample run the demo with 6 lives
-"""hang = game.Hangman(5)
-hang.start_game()"""
+#hang.start_game(lives=6) #Sample run the demo with 6 lives
+#hang.start_game(False, 6) #Sample run the demo with 6 lives
 
-#Sample run the game in full mode (with expansive list of words
-"""hang = game.Hangman()
-hang.start_game(True)"""
 
-#Sample run the game in full mode (with expansive list of words and 10 lives
-hang = game.Hangman(7)
-hang.start_game(True)
+#hang.start_game(True, 10) #Sample run the full game with 10 lives
+
+hang.start_game(True, 5) #Sample run the game in full mode and 5 lives

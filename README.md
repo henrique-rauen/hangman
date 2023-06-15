@@ -11,8 +11,9 @@ In order to install you can either clone this repository or download the files s
 - This game has a demo mode that uses a 4 word list and has a full mode where the words are read from a file with almost 1000 words (included in this distribution). You can add new words to the file as long as each word occupy a single line.
 - You can change the game difficulty by changing the number of lives.
 ### Usage
-You can run the game on "demo mode" by instantiating a Hangman object ```hang=Hangman``` and calling ```hang.start_game()```. If you want to run the game in full mode use ```Hang.start_game(True)```, to change the number of lives instantiate the ```Hangman``` class with the number of desired lives as a parameters, for example ```hang = Hangman(5)```.\
-The file ```main.py``` comes with 4 sample usages of the game, from demo mode with default number of lives (5) to full mode with an arbitrary number of lives. If you run the file as is, it will run in full mode with 7 lives.
+```Hangman.start_game()```
+The ```start_game()``` function has 2 optional parameters: ```full``` (boolean) and  ```lives``` (int). Default is ```full=False``` and ```lives=5```. If you want to run the game in full mode use ```start_game(full=True)```, to change the number of lives use ```Hangman(lives=5)```.\
+The file ```main.py``` comes with 3 sample usages of the game. If you run the file as is, it will run in full mode with 5 lives.
 In order to run the file just type ```python3 main.py```
 
 ## Made by Henrique Rauen
